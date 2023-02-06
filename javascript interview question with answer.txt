@@ -1,0 +1,173 @@
+Javascript Interview Question and answer
+
+-----------------------------
+Data types in js
+----------------------------
+there are two types on javascript
+primitive(value types)
+stirng
+number
+boolean
+undefined
+null
+symbol (es6)
+non-primitive (refernce type)
+Object
+arrays
+functions
+------------------------------------
+Javascript is dynamic type language that means we can change the variable type
+------------------------------------
+let a = "one"; //string
+a = 10 //number
+
+----------------------------
+Hoising in javascript
+------------------------------
+hoisting is the process of moving functions declartion to the top of the file and 
+this is done automatically by the javascript engine that is executing this code.
+so that's the reason we can call functions that are defined using the functions declartion syntax before the definiton.
+
+run();
+const run = function(){
+console.log('run');
+}
+
+console.log(x); 
+let x =1
+uncaught refernce error for both examples
+--------------------------------------------------------------
+Differnce between function declartion and function expression
+--------------------------------------------------------------
+Function Declaration	
+Function Expression
+1.	A function declaration must have a function name.	
+A function expression is similar to a function declaration without the function name.
+2.	Function declaration does not require a variable assignment. 	
+Function expressions can be stored in a variable assignment.
+3.	These are executed before any other code.	
+Function expressions load and execute only when the program interpreter reaches the line of code.
+4.	The function in function declaration can be accessed before and after the function definition.	
+The function in function expression can be accessed only after the function definition.
+5.	Function declarations are hoisted	
+Function expressions are not hoisted
+6.	Syntax: function geeksforGeeks(paramA, paramB) { // Set of statements }	
+Syntax: var geeksforGeeks= function(paramA, paramB) { // Set of statements }
+
+----------------------------------------------------------------------
+Differnce between call by value and call by refernce in javascript
+-----------------------------------------------------------------------
+Difference between call by value and call by reference:
+
+primitive are copied by their value
+Object are copied by there reference
+
+Call by value 
+Call by reference
+1.The original variable is not modified on changes in other variables.	
+The original variable gets modified on changes in other variables.
+Actual and copied variables will be created in different memory locations.	
+Actual and copied variables are created in the same memory location.
+On passing variables in a function, any changes made in the passed variable will not affect the original one.	
+On passing variables in a function, any changes made in the passed parameter will update the original variable’s reference too.
+
+    // By value (primitives)
+    var a = 5;
+    var b;
+    b = a;
+    a = 3;
+    console.log(a); // 3
+    console.log(b); //5
+	
+	Output: “b” was just a copy of “a”. It has its own space in memory. When we change “a” it does not have any impact on the value of “b”. 
+
+
+	
+    // By reference (all objects (including functions))
+    var c = { greeting : 'Welcome' };
+    var d;
+    d = c;
+      
+    // Mutating the value of c
+    c.greeting = 'Welcome to geeksforgeeks';
+    console.log(c); //{greeting: 'Welcome to geeksforgeeks'}
+    console.log(d); //{greeting: 'Welcome to geeksforgeeks'}
+	
+	Example: Over here, when we set d=c, “d” points to the same location in memory where “c” does. At first, we have a name-value pair stored in “c”. Now when we change a property using “c”, it changes the property in “d” also because both point to the same object. Changes in one it affects.
+
+--------------------------------------------
+Higher order functions in javascript
+--------------------------------------------
+Higher Order Functios is a function takes function as argument and return it or both.
+ 
+let numbers = [1, 2, 3];
+
+numbers.map((number) => number * 2); // map is higher order function takes function as argument
+
+setTimeout(() => console.log("Hello World"), 2000); // setTimeout is higher order function takes function as an argument
+
+------------------------
+Apply call bind in js
+-----------------------
+Call is a function that helps you change the context of the invoking function. In layperson's terms, it helps you replace the value of this inside a function with whatever value you want.
+
+Apply is very similar to the call function. The only difference is that in apply you can pass an array as an argument list.
+
+Bind is a function that helps you create another function that you can execute later with the new context of this that is provided.
+
+function playVideo(a, b){
+console.log(this);
+}
+
+playVideo.call({name:mosh}, a, b);
+playVideo.apply({name:mosh}[a,b]);
+const fn = playVideo.bind({name:mosh});
+fn();
+
+const video = {
+	title: 'a',
+	tags : ['a','b','c'],
+	showTags(){
+		this.tags.forEach(function(tag){
+			console.log(this.title, tag);
+		}.bind(this));
+	}
+}
+
+video.showTags();
+
+----------------
+Currying in js
+----------------
+It is a technique in functional programming, transformation of the function of multiple arguments into several functions of a single argument in sequence. 
+
+function add(a+ b){
+	return a+b;
+}
+
+function add(a){
+	return function(b){
+		return a + b;
+	}
+}
+
+const add1 = add(1);
+add1(5)
+
+rewrite like this
+add(a)(b)
+
+rewrite using arrow function
+
+const add = a => b => return a + b;
+
+---------------------------
+Global and local scope
+------------------------------
+
+
+
+
+
+ 
+ 
